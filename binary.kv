@@ -1,0 +1,213 @@
+<rootWindow>
+    MDBoxLayout:
+        id: box
+        orientation: "vertical"
+        size_hint: 1, 1
+        
+        BinaryClock:
+            id: clock
+        floatWindow:
+            id: floats
+
+        MDBoxLayout:
+            size_hint: 1, None
+            pos_hint: {"center_x": .5}
+            MDRectangleFlatIconButton:
+                id: button
+                icon: ""
+                size_hint: 1, None
+                on_release: app.on_settings_popup()
+                md_bg_color: app.theme_cls.primary_color
+                icon_color: app.theme_cls.primary_light
+    
+    MDTopAppBar:
+        id: topbar
+        pos_hint: {"top": 1}
+        title: "PyBinClock"
+        size_hint: 1, None
+        md_bg_color: app.theme_cls.primary_color
+
+
+<ItemListStyle@OneLineAvatarIconListItem>
+    size_hint: 1, None
+    IconLeftWidgetWithoutTouch:
+        icon: "theme-light-dark"
+    rightCheckbox:
+        active: True if app.theme_cls.theme_style == "Dark" else False
+        on_active: app.on_style_active(*args)
+
+<ItemListCap@OneLineAvatarIconListItem>
+    size_hint: 1, None
+    IconLeftWidgetWithoutTouch:
+        icon: "closed-caption"
+    rightCheckbox:
+        active: True if app.captions == True else False
+        on_active: app.on_captions_active(*args)
+
+<ItemListNum@OneLineAvatarIconListItem>
+    size_hint: 1, None
+    IconLeftWidgetWithoutTouch:
+        icon: "format-list-numbered"
+    rightCheckbox:
+        active: True if app.numbers == True else False
+        on_active: app.on_numbers_active(*args)
+
+<ItemListSec@OneLineAvatarIconListItem>
+    size_hint: 1, None
+    IconLeftWidgetWithoutTouch:
+        icon: "clock"
+    rightCheckbox:
+        active: True if app.seconds == True else False
+        on_active: app.on_seconds_active(*args)
+
+<ItemListAuto@OneLineAvatarIconListItem>
+    size_hint: 1, None
+    IconLeftWidgetWithoutTouch:
+        icon: "reload"
+    rightCheckbox:
+        active: False
+        on_active: app.on_auto_active(*args)
+
+
+<ItemButtonSheet@MDIconButton>
+    icon: ""
+    size_hint: 1/(app.COLORS-1), 1/(app.COLORS-1)
+    rounded_button: True
+    
+
+<floatWindow@BoxLayout>:
+    id: float
+    orientation: "vertical"
+    size_hint_y: None
+    height: "300dp"
+    radius: 60
+    MDScrollView:
+        id: scroll
+        do_scroll_x: False
+        MDBoxLayout:
+            radius: 60
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: 10
+            md_bg_color: app.theme_cls.primary_color
+#            MDRectangleFlatIconButton:
+#                radius: 48
+#                icon: "dots-grid"
+#                size_hint: 1, None
+#                on_release: app.popup.dismiss()
+#                md_bg_color: app.theme_cls.primary_light
+#                rounded_button: False
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                padding: "2dp"
+                MDLabel:
+                    text: "COLOURS"
+            MDGridLayout:
+                id: gridcolor
+                radius: 48
+                cols: 8 #app.COLORS
+                spacing: "2dp"
+                padding: 12
+                size_hint: 1, None
+                height: (self.width/8)*2
+                md_bg_color: app.theme_cls.primary_light
+
+#                adding item manually
+#                replaced by loop in python class
+                ItemButtonSheet:
+                    text: "Red"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .8, .2, .2, 1
+                ItemButtonSheet:
+                    text: "Green"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .2, .8, .2, 1
+                ItemButtonSheet:
+                    text: "Blue"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .2, .2, .8, 1
+                ItemButtonSheet:
+                    text: "Teal"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .8, .8, .8, 1
+                    
+                ItemButtonSheet:
+                    text: "Orange"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#ff9800"
+                ItemButtonSheet:
+                    text: "Deep"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .97, .4, 0, 1
+                ItemButtonSheet:
+                    text: "Pink"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .9, .03, .37, 1
+                ItemButtonSheet:
+                    text: "Purple"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: .45, .21, .48, 1
+                    
+                    
+                ItemButtonSheet:
+                    text: "Indigo"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#3f51b5"
+                ItemButtonSheet:
+                    text: "LightBlue"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#03a9f4"
+                ItemButtonSheet:
+                    text: "Cyan"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#00bcd4"
+                ItemButtonSheet:
+                    text: "Lime"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#cddc39"
+                ItemButtonSheet:
+                    text: "Amber"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#ffc107"
+                ItemButtonSheet:
+                    text: "LightGreen"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#8bc34a"
+                ItemButtonSheet:
+                    text: "BlueGray"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#607d8b"
+                ItemButtonSheet:
+                    text: "Yellow"
+                    on_release: app.on_selected_grid(self.text)
+                    md_bg_color: "#ffeb3b"
+                    
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                padding: "2dp"
+                MDLabel:
+                    text: "OPTIONS"
+            MDList:
+                radius: 48
+                id: setlist
+                md_bg_color: app.theme_cls.primary_light
+                divider: "Inset"
+                divider_color: app.theme_cls.primary_dark
+                padding: 20
+                ItemListStyle:
+                    text: "Dark Theme"
+                ItemListCap:
+                    text: "Show Captions"
+                ItemListNum:
+                    text: "Show Numbers"
+                ItemListSec:
+                    text: "Show Second"
+                ItemListAuto:
+                    text: "Always On"
+
+
+
