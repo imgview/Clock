@@ -17,7 +17,7 @@ jobs:
           command: buildozer android clean
           
       - name: CEK LAGI
-         uses: actions/checkout@v2
+        uses: actions/checkout@v2
                  
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
