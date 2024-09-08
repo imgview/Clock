@@ -11,14 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Clear Cache
-        uses: ArtemSBulgakov/buildozer-action@v1
-        with:
-          command: buildozer android clean
-          
-      - name: CEK LAGI
-        uses: actions/checkout@v2
-                 
+        
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
