@@ -13,9 +13,9 @@ jobs:
         
       - name: Clear Cache
         uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
         with:
           command: buildozer clean
+          
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
